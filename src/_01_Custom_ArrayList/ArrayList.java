@@ -58,18 +58,24 @@ public class ArrayList <T>{
 	}
 	
 	public void remove(int loc) throws IndexOutOfBoundsException {
-		if (loc > arr1 .length -1 ) {
+		if (loc > arr1.length - 1) {
 			throw new IndexOutOfBoundsException();
 		}
 	T[] arr4 = (T[]) new Object[arr1.length -1];
-	for (int i = arr1.length; i > loc; i++) {
+	for (int i = 0; i < loc; i++) {
 		arr4[i] = arr1[i];
 	}
-	for (int i = loc; i > 0; i++) {
-	arr4[i - 1] = arr1[i];	
-	}
+	for (int i = loc; i < arr4.length; i++) {
+	if (i > 0) {
 	
-	arr4 = arr1;
+		arr4[i-1] = arr1[i];
+		arr1[i-1] = arr4[i];
+		 	arr1[i] = arr4[i];
+	}
+			
+	}
+	arr1 = arr4;
+	
 	}
 	
 	public boolean contains(T val) {
@@ -79,6 +85,7 @@ public class ArrayList <T>{
 
 	public int size() {
 		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 }
