@@ -66,13 +66,13 @@ public class ArrayList <T>{
 		arr4[i] = arr1[i];
 	}
 	for (int i = loc; i < arr4.length; i++) {
-	if (i > 0) {
-	
-		arr4[i-1] = arr1[i];
-		arr1[i-1] = arr4[i];
-		 	arr1[i] = arr4[i];
+	if (i >= loc) {
+	 arr4[i] = arr1[i+1]; 
+		
 	}
-			
+	else if (i < loc) {
+		arr1[i] = arr4[i];
+	}	
 	}
 	arr1 = arr4;
 	
@@ -80,12 +80,19 @@ public class ArrayList <T>{
 	
 	public boolean contains(T val) {
 		
+		for (int i = 0; i < arr1.length; i++) {
+			if (arr1[i] == val) {
+				return true;
+			}
+		}
+		
+		
 		return false;
 	}
 
 	public int size() {
 		// TODO Auto-generated method stub
 		
-		return 0;
+		return arr1.length;
 	}
 }
