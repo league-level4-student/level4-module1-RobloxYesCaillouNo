@@ -26,7 +26,6 @@ public class Snake {
 	public void feed() {
 		//1. add a new SnakeSegment object to the snake
 		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE));
-		
 	}
 
 	public Location getHeadLocation() {
@@ -38,19 +37,23 @@ public class Snake {
 	public void update() {
 		//1. use a switch statement to check on the currentDirection
 		//   of the snake and calculate its next x and y position.
-		Location local = getHeadLocation();
+		int nextX = 0;
+		int nextY = 0;
 		switch (currentDirection) {
 		case UP:
-		local.y--;
+			nextY--;
 			break;
+			
 		case DOWN:
-			local.y++;
+			nextY++;
 			break;
+			
 		case LEFT:
-			local.x--;
+			nextX--;
 			break;
+			
 		case RIGHT:
-			local.x++;
+			nextX++;
 			break;
 		
 		}
@@ -63,6 +66,7 @@ public class Snake {
 		}
 		
 		//3. set the location of the head to the new location calculated in step 1
+		Location local = new Location(head.getLocation().x + nextX, head.getLocation().y + nextY);
 		head.setLocation(local);
 
 		//4. set canMove to true
